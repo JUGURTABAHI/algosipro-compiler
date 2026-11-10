@@ -1,0 +1,249 @@
+\begin{algo}{source}{n}
+  \PRINTS{"source "}
+  \RETURN{n}
+\end{algo}
+
+\begin{algo}{doubleval}{n}
+  \RETURN{n + n}
+\end{algo}
+
+\begin{algo}{combiner}{a, b}
+  \RETURN{a * 100 + b}
+\end{algo}
+
+\begin{algo}{ignorer}{n}
+  \RETURN{9}
+\end{algo}
+
+\begin{algo}{different}{a, b}
+  \IF{a != b}
+    \RETURN{1}
+  \ELSE
+    \RETURN{0}
+  \FI
+\end{algo}
+
+\begin{algo}{choix}{n}
+  \SET{x}{10}
+  \IF{n > 0}
+    \SET{x}{20}
+  \ELSE
+    \SET{x}{30}
+  \FI
+  \RETURN{x}
+\end{algo}
+
+\begin{algo}{sanselse}{n}
+  \SET{x}{10}
+  \IF{n > 0}
+    \SET{x}{20}
+  \FI
+  \RETURN{x}
+\end{algo}
+
+\begin{algo}{imbrique}{a, b}
+  \SET{x}{1}
+  \IF{a > 0}
+    \IF{b > 0}
+      \SET{x}{11}
+    \ELSE
+      \SET{x}{12}
+    \FI
+  \ELSE
+    \SET{x}{20}
+  \FI
+  \RETURN{x}
+\end{algo}
+
+\begin{algo}{sommefor}{n}
+  \SET{s}{0}
+  \DOFORI{i}{1}{n}
+    \SET{s}{s + i}
+  \OD
+  \RETURN{s}
+\end{algo}
+
+\begin{algo}{sommewhile}{n}
+  \SET{s}{0}
+  \SET{i}{1}
+  \DOWHILE{i <= n}
+    \SET{s}{s + i}
+    \SET{i}{i + 1}
+  \OD
+  \RETURN{s}
+\end{algo}
+
+\begin{algo}{fact}{n}
+  \IF{n <= 1}
+    \RETURN{1}
+  \ELSE
+    \RETURN{n * \CALL{fact}{n - 1}}
+  \FI
+\end{algo}
+
+\begin{algo}{fib}{n}
+  \IF{n <= 1}
+    \RETURN{n}
+  \ELSE
+    \RETURN{\CALL{fib}{n - 1} + \CALL{fib}{n - 2}}
+  \FI
+\end{algo}
+
+\begin{algo}{locales}{n}
+  \IF{n <= 0}
+    \RETURN{0}
+  \ELSE
+    \SET{avant}{n * 3 + 1}
+    \SET{enfant}{\CALL{locales}{n - 1}}
+    \RETURN{avant + enfant}
+  \FI
+\end{algo}
+
+\begin{algo}{main}{}
+  \PRINTS{"=== Calculs ===\n"}
+  \PRINTD{2 + 3 * 4}
+  \PRINTS{" "}
+  \PRINTD{(2 + 3) * 4}
+  \PRINTS{" "}
+  \PRINTD{24 / 6}
+  \PRINTS{" "}
+  \PRINTD{3 - 8}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Propagation ===\n"}
+  \SET{a}{84}
+  \SET{b}{7}
+  \PRINTD{a / b}
+  \PRINTS{" "}
+  \SET{x}{4}
+  \SET{x}{x + 3}
+  \PRINTD{x}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Comparaisons ===\n"}
+  \PRINTD{2 < 3}
+  \PRINTS{" "}
+  \PRINTD{3 > 2}
+  \PRINTS{" "}
+  \PRINTD{3 <= 3}
+  \PRINTS{" "}
+  \PRINTD{3 >= 3}
+  \PRINTS{" "}
+  \PRINTD{3 != 3}
+  \PRINTS{"\n"}
+
+  \PRINTD{\CALL{different}{4, 4}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{different}{3, 4}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{different}{5, 4}}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Booleens et branches constantes ===\n"}
+  \SET{vrai}{2 <= 3}
+  \SET{faux}{3 < 2}
+  \PRINTD{vrai}
+  \PRINTS{" "}
+  \PRINTD{faux}
+  \PRINTS{"\n"}
+
+  \IF{vrai}
+    \PRINTS{"branche vraie\n"}
+  \ELSE
+    \PRINTS{"ERREUR\n"}
+  \FI
+
+  \IF{faux}
+    \PRINTS{"ERREUR\n"}
+  \FI
+  \PRINTS{"suite conservee\n"}
+
+  \PRINTS{"=== Affectations dans les branches ===\n"}
+  \PRINTD{\CALL{choix}{1}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{choix}{0}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{sanselse}{1}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{sanselse}{0}}
+  \PRINTS{"\n"}
+
+  \PRINTD{\CALL{imbrique}{1, 1}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{imbrique}{1, 0}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{imbrique}{0, 1}}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Boucles ===\n"}
+  \PRINTD{\CALL{sommefor}{5}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{sommewhile}{5}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{sommefor}{0}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{sommewhile}{0}}
+  \PRINTS{"\n"}
+
+  \SET{total}{0}
+  \DOFORI{i}{1}{3}
+    \DOFORI{j}{1}{2}
+      \SET{total}{total + i * j}
+    \OD
+  \OD
+  \PRINTD{total}
+  \PRINTS{"\n"}
+
+  \DOWHILE{2 < 1}
+    \PRINTS{"ERREUR\n"}
+  \OD
+  \PRINTS{"suite des boucles\n"}
+
+  \PRINTS{"=== Effets des appels ===\n"}
+  \PRINTD{\CALL{source}{7} * 0}
+  \PRINTS{"\n"}
+  \PRINTD{0 * \CALL{source}{7}}
+  \PRINTS{"\n"}
+  \PRINTD{0 / \CALL{source}{5}}
+  \PRINTS{"\n"}
+  \PRINTD{\CALL{source}{7} - \CALL{source}{7}}
+  \PRINTS{"\n"}
+
+  \SET{inutile}{\CALL{source}{42}}
+  \PRINTS{"affectation inutilisee\n"}
+
+  \SET{ecrase}{\CALL{source}{8}}
+  \SET{ecrase}{99}
+  \PRINTD{ecrase}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Arguments ===\n"}
+  \PRINTD{\CALL{doubleval}{\CALL{source}{6}}}
+  \PRINTS{"\n"}
+  \PRINTD{\CALL{ignorer}{\CALL{source}{4}}}
+  \PRINTS{"\n"}
+  \PRINTD{\CALL{combiner}{\CALL{source}{8}, \CALL{source}{3}}}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Recursion et variables locales ===\n"}
+  \PRINTD{\CALL{fact}{6}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{fib}{10}}
+  \PRINTS{" "}
+  \PRINTD{\CALL{locales}{6}}
+  \PRINTS{"\n"}
+
+  \SET{premier}{\CALL{fib}{8}}
+  \SET{second}{\CALL{locales}{6}}
+  \PRINTD{premier}
+  \PRINTS{" "}
+  \PRINTD{second}
+  \PRINTS{" "}
+  \PRINTD{premier - second}
+  \PRINTS{"\n"}
+
+  \PRINTS{"=== Fin ===\n"}
+  \RETURN{0}
+\end{algo}
+
+\CALL{main}{}

@@ -1,0 +1,13 @@
+# Exécutable et objets
+compil
+*.o
+
+# Fichiers générés par Flex et Bison
+lex.yy.c
+compil.tab.c
+compil.tab.h
+compil.output
+
+# Fichiers intermédiaires de test
+out.asm
+out.sipro
