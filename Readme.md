@@ -424,3 +424,9 @@ décrites ci-dessus, avec les limites indiquées. La gestion des cas limites,
 notamment les débordements arithmétiques et les analyses avancées du
 flot de contrôle, ne doit pas être considérée comme exhaustive.
 
+## Attribution
+
+L’implémentation de la table de hachage utilisée dans ce projet est
+issue des travaux de M. Christophe HANCART, professeur des universités
+à l’Université de Rouen Normandie.
+
